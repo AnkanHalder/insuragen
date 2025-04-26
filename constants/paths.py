@@ -1,0 +1,3 @@
+DOC_META_BASE_PATH = "docs"
+
+VECTOR_BASE_PATH = "data"

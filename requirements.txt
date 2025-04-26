@@ -1,0 +1,28 @@
+# === Core App ===
+streamlit==1.34.0
+fastapi==0.110.2
+uvicorn[standard]==0.29.0      # ASGI server to run FastAPI
+python-multipart
+
+# === PDF + Data Processing ===
+PyMuPDF==1.24.4                # For reading PDFs
+
+# === Embeddings + Reranking ===
+langchain-community
+langchain-huggingface
+sentence-transformers==2.5.1   # Includes HuggingFace transformers & tokenizers
+faiss-cpu==1.10.0              # For vector storage + similarity search
+
+# === Serialization ===
+joblib==1.4.2                  # For saving/loading metadata
+
+# === Optional Logging + Dev ===
+python-dotenv==1.0.1           # For loading .env configs
+loguru==0.7.2                  # Cleaner logging
+tqdm==4.66.2                   # Progress bars
+
+# === Local Ollama Interaction ===
+ollama==0.1.9                  # Ollama Python SDK 
+
+# === Compatibility ===
+aiofiles==23.2.1               # FastAPI file handling

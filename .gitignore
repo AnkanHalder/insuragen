@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.Python
+env/
+venv/
+.venv/
+*.log
+
+# Jupyter/IPython
+.ipynb_checkpoints/
+
+# VSCode/IDEA
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/config.toml
+.streamlit/secrets.toml
+
+# Docker/Ollama artifacts
+*.bak
+*.tmp
+*.lock
+ollama.lock
+ollama.db
+ollama/
+
+# Dependency Files
+Pipfile.lock
+poetry.lock
+
+# Local Dev Junk
+_junk/
+scratchpad/
+playground/
+
+# Git ignored local secrets or config
+.env
+.env.*
+
+# Misc
+*.swp
+*.swo
