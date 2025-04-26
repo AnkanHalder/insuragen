@@ -6,6 +6,12 @@
 
 ## 🚀 Project Setup & Running Instructions
 
+Before proceeding, make sure you're on the `dev` branch to access all code and development files:
+
+```bash
+git checkout dev
+```
+
 ### 🐳 Step 1: Local LLM Setup with Docker
 
 To run the chatbot locally using a powerful open-source LLM (like Mistral), follow the steps below:
@@ -94,7 +100,7 @@ Sparse retrieval (vector search) can misfire, especially on vague queries. Reran
 
 ---
 
-## 🔧 Why This Method Was Chosen
+## ⚖️ Why This Method Was Chosen
 
 We considered several RAG structures:
 
@@ -135,7 +141,7 @@ This makes it easily integrable with CRM systems, web portals, and mobile apps.
 
 ---
 
-## 🧩 System Architecture
+## 🧹 System Architecture
 
 ```text
 [User]
@@ -237,6 +243,18 @@ This ensures fallback to human agents.
 - Fork and clone this repo.
 - Setup virtual env, install dependencies.
 - Submit PRs via `dev` branch.
+
+### 📂 Branching Strategy
+
+- **`main` branch** contains the latest stable **README and documentation only**.
+- All active development, including code, features, and bugfixes, happens on the **`dev` branch**.
+- If you want to **view or contribute to the code**, please switch to the `dev` branch:
+
+```bash
+git checkout dev
+```
+
+We keep the `main` branch clean to ensure smooth previewing for hackathon judges or stakeholders.
 
 ---
 
