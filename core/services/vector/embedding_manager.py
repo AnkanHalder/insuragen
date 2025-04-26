@@ -1,6 +1,5 @@
 from typing import List
-from langchain.embeddings import HuggingFaceEmbeddings
-
+from langchain_community.embeddings import HuggingFaceEmbeddings
 
 class EmbeddingManager:
     def __init__(self, model_name="sentence-transformers/all-MiniLM-L6-v2"):

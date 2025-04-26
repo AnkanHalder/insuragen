@@ -1,3 +1,4 @@
+readme_text="""
 # Insuragen - Reliable Insurance Response Engine built with MultiDomain RAG and Smart Reranking
 
 **AI-Powered Insurance Chatbot with Multi-Domain RAG and Smart Reranking**
@@ -281,3 +282,5 @@ MIT License — Feel free to adapt and extend this project.
 ---
 
 Built with ❤️ by Team InsuraGen for the TCS Hackathon 2025.
+
+"""
