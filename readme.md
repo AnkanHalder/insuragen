@@ -6,6 +6,7 @@
 
 ## 🚀 Project Setup & Running Instructions
 
+Fork and Clone the Repo.
 Before proceeding, make sure you're on the `dev` branch to access all code and development files:
 
 ```bash
@@ -32,7 +33,7 @@ docker pull ollama/mistral
 ollama serve
 ```
 
-Or using Docker directly:
+Or using Docker directly [RECOMMENDED]:
 
 ```bash
 docker run -d -p 11434:11434 --name ollama ollama/mistral
@@ -78,7 +79,7 @@ Make sure ports are open if hosted remotely. By default, Streamlit uses port `85
 
 ### 🏢 Why Multi-Domain?
 
-Insurance firms operate in silos: Auto, Life, Health, and Home each have dedicated documents. Searching across a flat, mixed chunk space is error-prone and inefficient.
+Insurance firms operate in silos: Auto, Life, Health, and Home each have dedicated documents. Searching across a flat, mixed chunk space is error-prone and inefficient. Also, Departments handle each domain separately, so why not the assistant.
 
 ### 🎯 Solution
 
@@ -104,24 +105,26 @@ Sparse retrieval (vector search) can misfire, especially on vague queries. Reran
 
 We considered several RAG structures:
 
-### ❌ Traditional RAG
+### Traditional RAG
 
 - Vector search retrieves top-k from a single large index.
 - Not optimal for siloed data.
 - Prone to noisy or misclassified results.
 
-### ⚠️ RAPTOR (Recursive Summarization)
+### RAPTOR (Recursive Summarization)
 
 - Graph-based summarization for scalable chunking.
-- Better for long, structured documents.
+- Better for long, structured documents. Good for Extremley Huge Number of Documents, with less overlap of data.
 - But complex, hard to maintain for domain-separated corpora.
 - Summarization discards valuable specificity needed in insurance queries.
+- While powerful for fast queries, uploading a single new document takes HUGE time and resources due to recreation of Summerisation tree. Thus, maintainability is challenging.
 
 ### ✅ Final Chosen Strategy
 
 - **Flat domain-wise indices** (easy to maintain)
 - **Cross-encoder reranking** (state-of-the-art relevance)
 - **No pre-summarization** (full retention of facts)
+- **Modular** (Easy Adding and removing of PDFs)
 - Streamlined for real-world insurance use-cases
 
 ---
@@ -186,8 +189,8 @@ This makes it easily integrable with CRM systems, web portals, and mobile apps.
 
 ### 3. **Embedding + Metadata Storage**
 
-- Balancing pickle file storage for chunks with scalable FAISS usage.
-- Designed a modular class-based `DomainVectorStore`.
+- Balancing pickle(updated now to json) file storage for chunks with scalable FAISS usage.
+- Designing the best OPP and modular approach towards Vector and Metadata Storage and what data to store for fast retrival and the structure to store it, required clever planning.
 
 ### 4. **Deployment Planning**
 
@@ -205,24 +208,28 @@ core/
     vector/
     query_controller.py
   ui/
-    views/
-    session_state.py
+    components/
+      pages/
+    models/
+      session_state.py
 app.py
 requirements.txt
-Dockerfile
+*Dockerfile
 ```
 
 ---
 
 ## 🧪 Further Work
 
+- 🐳 Containerize with Docker Compose: Streamline deployment by combining the Ollama Mistral image and the base Streamlit application within a Docker Compose setup for easy orchestration and management.
 - ✅ Convert internal logic into APIs using FastAPI
-- ✅ Add support for uploading documents from UI
-- 🟡 PDF OCR support for scanned forms
-- 🟡 Add document tagging and priority scoring
 - 🟢 Add user feedback rating to improve reranker
 - 🔄 Sync vector store with cloud
 - 📊 Add analytics and query logging
+- 🪲 Bug Fixes
+- 📒 Create jupyter Notebook for easy testing
+- 🧩 Generate embedable Chatbox UI for companies that will communicate with the RAG+LLM
+- ⚙️ Implement Settings Functionality to allow admins to fine-tune parameters
 
 ---
 
@@ -237,6 +244,15 @@ supportEmail@help.com
 This ensures fallback to human agents.
 
 ---
+
+You May view the Prompt used :
+
+```
+core/
+  services/
+    ai/
+      prompts/
+```
 
 ## 🙌 Contributing
 
